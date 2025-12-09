@@ -31,6 +31,7 @@
 
         <div class="status-bar">
           <div class="status-badge"><span class="status-dot" id="rtcDot"></span><span id="rtcInfo">Disconnected</span></div>
+          <div class="status-badge"><span class="status-dot" id="agentDot"></span><span id="agentSpeakingBadge">Agent: Veta AI</span></div>
         </div>
       </div>
 
@@ -343,6 +344,8 @@
 // ====================== VOICE ASSISTANT LOGIC ======================
 const rtcInfoEl = document.getElementById("rtcInfo");
 const rtcDot = document.getElementById("rtcDot");
+const agentDot = document.getElementById("agentDot");
+const agentSpeakingBadge = document.getElementById("agentSpeakingBadge");
 const connectBtn = document.getElementById("connectBtn");
 const disconnectBtn = document.getElementById("disconnectBtn");
 const muteBtn = document.getElementById("muteBtn");
@@ -391,6 +394,8 @@ function setAgentText(text){
 }
 
 function setAgentSpeaking(on){
+  agentSpeakingBadge.textContent = on ? "Agent: Speaking" : "Agent: Veta AI";
+  agentDot.classList.toggle("active", on);
   if (connected && !isEndingCall) voiceRing.classList.toggle("active", on);
 }
 

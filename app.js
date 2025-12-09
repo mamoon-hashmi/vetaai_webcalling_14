@@ -262,7 +262,7 @@
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 16px 20px;
+      padding: 3px 20px;
       background: white;
       border: 1px solid #e5e7eb;
       border-radius: 6px;
@@ -604,4 +604,5 @@
   muteBtn.onclick = mute;
   unmuteBtn.onclick = unmute;
 })();
+
 

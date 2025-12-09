@@ -478,7 +478,7 @@ function startAgentSTT(stream){
     const form = new FormData();
     form.append("file", e.data, "audio.webm");
     try {
-      const res = await fetch("/v1/stt/agent", {method:"POST", body:form, signal:sttAbort.signal});
+      const res = await fetch("https://webcall.vetaai.com/v1/stt/agent", {method:"POST", body:form, signal:sttAbort.signal});
       if (res.ok) {
         const json = await res.json();
         if (json.text) {
@@ -504,7 +504,7 @@ async function connect(){
   rtcInfoEl.textContent = "Connecting...";
 
   try {
-    const resp = await fetch("/v1/voice/session", {method:"POST", headers:{"Content-Type":"application/json"}, body:"{}"});
+    const resp = await fetch("https://webcall.vetaai.com/v1/voice/session", {method:"POST", headers:{"Content-Type":"application/json"}, body:"{}"});
     const data = await resp.json();
     const token = data.client_secret?.value || data.client_secret || data.token;
     const url = data.rtc_url || data.url || data.webrtc_url || data.web_rtc_url;
@@ -591,3 +591,4 @@ connectBtn.onclick = connect;
 disconnectBtn.onclick = disconnect;
 muteBtn.onclick = mute;
 unmuteBtn.onclick = unmute;
+
